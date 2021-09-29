@@ -30,16 +30,16 @@
                     </nav>
                 </header>
                 <div class="d-flex justify-content-center">
-                        <input class="" type="text" placeholder="Player 1"/> 
+                        <input class="playerInput" type="text" placeholder="Player 1"/> 
                         <h3> V.S. </h3>
-                        <input class="" type="text" placeholder="Player 2"/>        
+                        <input class="playerInput" type="text" placeholder="Player 2"/>        
                 </div>  
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-primary my-2 my-sm-0 " type="submit"> Compare </button> 
+                    <button class="btn" type="submit"> Compare </button> 
                 </div>  
                           
                 <!-- Top 3 Cards -->
-                <div style="display: none;">
+                <div>
                     <section class="row">
                         <div class="col-md-4">
                             <div class="card">
@@ -76,7 +76,7 @@
                                 </h5>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        Top Player Stats
+                                        
                                     </p>
                                 </div>
                             </div>
@@ -136,25 +136,55 @@
         <div class="row ">
             <div class="col-md-6 ">
                 <div class="card">
-                    <h5 class="card-header">
+                    <h4 class="card-header">
                         Player 1 Name
-                    </h5>
+                    </h4>
                     <div class="card-body">
-                        <p class="card-text">
-                            Player 1 Stats
-                        </p>
+                        <h5 class="pleyerOverall">Overall</h5>
+                        <p> Wins: <span id="p1w"></span></p>
+                        <p>Win %: <span id="p1win"></span></p>
+                        <p>K/D: <span id="p1kd"></span></p>
+                        <p>Total Kills: <span id="p1tk"></span></p>
+                        <br>
+                        <h5>Solo</h5>
+                        <p>Wins: <span id="p1sw"></span></p>
+                        <p>K/D: <span id="p1skd"></span></p>
+                        <br>
+                        <h5>Duo</h5>
+                        <p>Wins: <span id="p1dw"></span></p>
+                        <p>K/D: <span id="p1dkd"></span></p>
+                        <br>
+                        <h5>Squads</h5>
+                        <p>Wins: <span id="p1sqw"></span></p>
+                        <p>K/D: <span id="p1sqkd"></span></p>
+
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card">
-                    <h5 class="card-header">
+                    <h4 class="card-header">
                         Player 2 Name
-                    </h5>
+                    </h4>
                     <div class="card-body">
-                        <p class="card-text">
-                            Player 2 Stats
-                        </p>
+                        <h5 class="playerOverall">Overall</h5>
+                        <p> Wins: <span id="p2w"></span></p>
+                        <p>Win %: <span id="p2win"></span></p>
+                        <p>K/D: <span id="p2kd"></span></p>
+                        <p>Total Kills: <span id="p1"></span></p>
+                        <br>
+                        <h5>Solo</h5>
+                        <p>Wins: <span id="p2sw"></span></p>
+                        <p>K/D: <span id="p2skd"></span></p>
+                        <br>
+                        <h5>Duo</h5>
+                        <p>Wins: <span id="p2dw"></span></p>
+                        <p>K/D: <span id="p2kd"></span></p>
+                        <br>
+                        <h5>Squads</h5>
+                        <p>Wins: <span id="p2sqw"></span></p>
+                        <p>K/D: <span id="p2sqkd"></span></p>
+
                     </div>
                 </div>
             </div>
