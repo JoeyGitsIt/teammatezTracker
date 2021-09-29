@@ -11,6 +11,9 @@ html {
 }
 header {
     background-color: var(--dark);
+    border-bottom: solid 3px white;
+    margin-bottom: 20px;
+    padding-left: 20px;
 }
 
 .webName {
@@ -28,3 +31,24 @@ header {
    color: var(--purple); 
 }
 
+.darkTheme {
+    background-color: var(--dark);
+    color: white;
+}
+.card {
+ background-color: var(--dark);
+ border-style: solid;
+ border-width: 3px;
+ border-image: linear-gradient(40deg, var(--brightPink), var(--red)) 1;
+ margin: 5px;
+ color: white;
+}
+
+.row {
+    background-color: var(--dark);
+}
+
+.card-header {
+    border-bottom: solid 1px white;
+    text-align: center;
+}
