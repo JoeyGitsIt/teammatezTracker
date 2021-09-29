@@ -1,0 +1,30 @@
+:root {
+  --dark: rgb(25,25,25);
+  --red: rgb(150, 19, 19);
+  --brightPurple: rgb(136, 54, 204);
+  --brightPink:  rgb(222, 0, 230);
+}
+
+html {
+ background-color: var(--dark);
+
+}
+header {
+    background-color: var(--dark);
+}
+
+.webName {
+    background-color: #f3ec78;
+    background-image: linear-gradient(45deg, var(--brightPink), var(--red));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+
+}
+
+.nav-item a{
+   color: var(--purple); 
+}
+
