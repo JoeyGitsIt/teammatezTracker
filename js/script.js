@@ -1,10 +1,10 @@
 // setting up localStorage
 // arguements that the api can take: name, accountType(epic/psn/xbl), timeWindow(season/lifetime), image (displays type of controller being used)
 
-var apiLink = "https://fortnite-api.com/v2/stats/br/v2"
+var apiLink = "https://fortnite-api.com/v2/stats/br/v2/"
 
 
-function getInformation() {
+/* function getInformation() {
   // get value of input box
   var initials = initialsEl.value.trim();
 
@@ -27,4 +27,15 @@ function getInformation() {
     // redirect to next page
     window.location.href = "highscores.html";
   }
-}
+}*/
+
+
+// AJAX call requires a third party library, jQuery
+$.ajax({
+  url: apiLink,
+  name: "skxawng6",
+  method: 'GET',
+}).then(function (response) {
+  console.log('Ajax Reponse \n-------------');
+  console.log(response);
+});
