@@ -119,9 +119,12 @@ header {
 }
 
 .btn {
+    font-size: 115%;
     background: linear-gradient(105deg, var(--better) 50%, var(--worse) 50%);
     border: solid 1px black;
     font-weight: bolder;
+    -webkit-text-stroke:1px black;
+    -webkit-text-fill-color:white;
 }
 
 .recentTeamz {
