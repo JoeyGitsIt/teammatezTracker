@@ -32,41 +32,38 @@ function getPlayers() {
 // setting up localStorage
 // arguements that the api can take: name, accountType(epic/psn/xbl), timeWindow(season/lifetime), image (displays type of controller being used)
 
-var apiLink = "https://fortnite-api.com/v2/stats/br/v2/"
+var apiLink = "https://fortnite-api.com/v2/stats/br/v2/?name=ninja";
+var historyParsed = "";
 
 
-/* function getInformation() {
+function getHistory() {
   // get value of input box
-  var initials = initialsEl.value.trim();
+  $.ajax({
+    url: apiLink,
+    method: 'GET',
+  }).then(function (response) {
+    console.log('Ajax Reponse \n-------------');
+    setHistory(response);
+    console.log(response);
+  })
+}
 
-  // make sure value wasn't empty
-  if (initials !== "") {
-    // get saved scores from localstorage, or if not any, set to empty array
-    var highscores =
-      JSON.parse(window.localStorage.getItem("highscores")) || [];
 
-    // format new score object for current user
-    var newScore = {
-      score: time,
-      initials: initials
-    };
+function setHistory(apiResponse) {  
+  if (apiResponse.status == 200) {
+    var history = JSON.parse(window.localStorage.getItem("history")) || [];
+    console.log(history);
 
-    // save to localstorage
-    highscores.push(newScore);
-    window.localStorage.setItem("highscores", JSON.stringify(highscores));
-
-    // redirect to next page
-    window.location.href = "highscores.html";
+    // if input is equal to a name already in the search history, do not push that names apiCall onto the JSON localStorage object thing
+    history.push(apiResponse);
+    window.localStorage.setItem("history", JSON.stringify(history));
+    // historyParsed stores the array of JSON objects Pog
+    // historyParsed = JSON.parse(localStorage.getItem("history"));
+    // console.log(historyParsed);
   }
-}*/
+}
 
 
-// AJAX call requires a third party library, jQuery
-$.ajax({
-  url: apiLink,
-  name: "skxawng6",
-  method: 'GET',
-}).then(function (response) {
-  console.log('Ajax Reponse \n-------------');
-  console.log(response);
-});
+getHistory();
+
+//   name: "skxawng6",
