@@ -130,14 +130,7 @@ header {
 .recentTeamz {
     color: var(--seafoam);
     border-bottom: var(--lighterDark) solid 2px;
-    text-align: center;
-    /* background-image: linear-gradient(to left, var(--darkblue), var(--seafoam));
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent; */
-    
+    text-align: center; 
 }
 
 .recentTeammates button{
