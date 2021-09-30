@@ -72,6 +72,7 @@ header {
 }
 
 .card-header {
+    font-weight: bolder;
     border-bottom: solid 2px var(--lighterDark);
     text-align: center;
     background-color: var(--brightPink);
@@ -118,7 +119,28 @@ header {
 }
 
 .btn {
+    font-size: 115%;
     background: linear-gradient(105deg, var(--better) 50%, var(--worse) 50%);
     border: solid 1px black;
     font-weight: bolder;
+    -webkit-text-stroke:1px black;
+    -webkit-text-fill-color:white;
+}
+
+.recentTeamz {
+    color: var(--seafoam);
+    border-bottom: var(--lighterDark) solid 2px;
+    text-align: center; 
+}
+
+.recentTeammates button{
+    color:white;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 15px;
+    margin: 5px 50px;
+    font-size: 115%;
+    background-color: var(--lighterDark);
+    border-radius: 10px;
+    width: fit-content;
 }

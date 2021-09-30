@@ -2,13 +2,27 @@
 $('#submit').on('click', function() {
     var tempP1 = $('#search1').val();
     var tempP2 = $('#search2').val();
+    var tempLS = JSON.parse(localStorage.getItem('autocomplete'));
+    var tempHB = JSON.parse(localStorage.getItem('historyButtons'));
+    if (tempLS == null) {
+        tempLS = [];
+    }
+    if (tempHB == null) {
+        tempHB = [];
+    }
+    tempLS.unshift(tempP1);
+    tempLS.unshift(tempP2);
+    tempHB.unshift(tempP1);
+    tempHB.unshift(tempP2);
+    localStorage.setItem('autocomplete', JSON.stringify(tempLS));
+    localStorage.setItem('historyButtons', JSON.stringify(tempHB));
     console.log(tempP1);
     console.log(tempP2);
-    getPlayers();
+    getPlayers(tempP1, tempP2);
 })
 
-function getPlayers() {
-    var requestUrl = 'https://fortnite-api.com/v2/stats/br/v2?name=TTV BD_Hype';
+function getPlayers(player1, player2) {
+    var requestUrl = 'https://fortnite-api.com/v2/stats/br/v2?name=' + player1;
 
     $.ajax({
         url: requestUrl,
@@ -27,7 +41,7 @@ function getPlayers() {
         $('#p1sqkd').text(response.data.stats.all.squad.kd);
     });
 
-    var requestUrl2 = 'https://fortnite-api.com/v2/stats/br/v2?name=skxawng6';
+    var requestUrl2 = 'https://fortnite-api.com/v2/stats/br/v2?name=' + player2;
 
     $.ajax({
         url: requestUrl2,
@@ -47,7 +61,16 @@ function getPlayers() {
     });
 }
 
-
+$( function() {
+    
+    var availableTags = JSON.parse(localStorage.getItem('autocomplete'));
+    $( "#search1" ).autocomplete({
+      source: availableTags
+    });
+    $( "#search2" ).autocomplete({
+        source: availableTags
+      });
+  } );
 
 // setting up localStorage
 // arguements that the api can take: name, accountType(epic/psn/xbl), timeWindow(season/lifetime), image (displays type of controller being used)
