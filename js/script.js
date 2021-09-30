@@ -75,6 +75,7 @@ function setHistory(apiResponse) {
     console.log(history);
 
     // if input is equal to a name already in the search history, do not push that names apiCall onto the JSON localStorage object thing
+    
     history.push(apiResponse);
     window.localStorage.setItem("history", JSON.stringify(history));
     // historyParsed stores the array of JSON objects Pog
