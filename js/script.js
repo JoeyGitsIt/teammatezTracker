@@ -118,7 +118,7 @@ function setHistory(apiResponse) {
 }
 
 var names;
-var kills;
+var timePlayed;
 var kdRatio;
 var winPercentage;
 
@@ -126,7 +126,7 @@ var winPercentage;
 function barGraph () {
   var barGraph = JSON.parse(window.localStorage.getItem("history"));
   names = [];
-  kills = [];
+  timePlayed = [];
   kdRatio = [];
   winPercentage = [];
 
@@ -134,7 +134,7 @@ function barGraph () {
 
   for (var i = 0; i < barGraph.length; i++) {
     names.push(barGraph[i].data.account.name);
-    kills.push(barGraph[i].data.stats.all.overall.kills);
+    timePlayed.push(barGraph[i].data.stats.all.overall.minutesPlayed);
     kdRatio.push(barGraph[i].data.stats.all.overall.kd);
     winPercentage.push(barGraph[i].data.stats.all.overall.winRate);
   }
@@ -162,20 +162,33 @@ function createChartKD (labels, values){
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(150, 92, 132, 0.2)',
+                    'rgba(105, 176, 11, 0.2)',
+                    'rgba(221, 170, 102, 0.2)',
+                    'rgba(255, 204, 204, 0.2)'
+                    ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(153, 102, 255, 1)',                           
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(150, 92, 132, 1)',
+                    'rgba(105, 176, 11, 1)',
+                    'rgba(221, 170, 102, 1)',
+                    'rgba(255, 204, 204, 1)'
                 ],
                 borderWidth: 1
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                    display:false
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true
@@ -184,12 +197,7 @@ function createChartKD (labels, values){
         }
     });
 }
-createChartKD(names, kdRatio)  
-    //run createChart
-    // window.onload = function() {
-    //     createChart();
-    //     console.log("I ran")
-    //  }
+createChartKD(names, kdRatio) 
 
     function createChartWin (labels, values){
 
@@ -200,7 +208,7 @@ createChartKD(names, kdRatio)
             data: { 
                 labels: labels,
                 datasets: [{
-                    label: 'Stats',
+                    label: '',
                     data: values,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -208,20 +216,33 @@ createChartKD(names, kdRatio)
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(150, 92, 132, 0.2)',
+                        'rgba(105, 176, 11, 0.2)',
+                        'rgba(221, 170, 102, 0.2)',
+                        'rgba(255, 204, 204, 0.2)'
+                        ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        'rgba(153, 102, 255, 1)',                           
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(150, 92, 132, 1)',
+                        'rgba(105, 176, 11, 1)',
+                        'rgba(221, 170, 102, 1)',
+                        'rgba(255, 204, 204, 1)'
                     ],
                     borderWidth: 1
                 }]
             },
             options: {
+                plugins: {
+                legend: {
+                    display:false,
+                    },
+                },
                 scales: {
                     y: {
                         beginAtZero: true
@@ -231,3 +252,48 @@ createChartKD(names, kdRatio)
         });
     }
 createChartWin(names, winPercentage);
+
+//Time Played chart
+
+function chartTimePlayed (labels, values) {
+
+    var ctx = document.getElementById('timePlayed').getContext('2d');
+        var timePlayed = new Chart(ctx, {
+            type: 'doughnut',
+            data: { 
+                labels: labels,
+                datasets: [{
+                    label: labels,
+                    data: values,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(150, 92, 132, 0.2)',
+                        'rgba(105, 176, 11, 0.2)',
+                        'rgba(221, 170, 102, 0.2)',
+                        'rgba(255, 204, 204, 0.2)'
+                        ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',                           
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(150, 92, 132, 1)',
+                        'rgba(105, 176, 11, 1)',
+                        'rgba(221, 170, 102, 1)',
+                        'rgba(255, 204, 204, 1)'
+                        ],
+                    borderWidth: 1,
+                }]
+            },
+        //    options: {
+        // });
+    });
+}
+chartTimePlayed(names, timePlayed);
