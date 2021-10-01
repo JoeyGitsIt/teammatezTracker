@@ -102,77 +102,45 @@ $(function () {
     });
 });
 
-// setting up localStorage
-// arguements that the api can take: name, accountType(epic/psn/xbl), timeWindow(season/lifetime), image (displays type of controller being used)
-
-// var apiLink = "https://fortnite-api.com/v2/stats/br/v2/?name=ninja";
-// var historyParsed = "";
-
-
-// function getHistory() {
-//   get value of input box
-//   $.ajax({
-//     url: apiLink,
-//     method: 'GET',
-//   }).then(function (response) {
-//     console.log('Ajax Reponse \n-------------');
-//     setHistory(response);
-//     console.log(response);
-//   })
-// }
-
-
 function setHistory(apiResponse) {  
   if (apiResponse.status == 200) {
-
     var history = JSON.parse(window.localStorage.getItem("history")) || [];
     console.log(history);
 
+    history.unshift(apiResponse);
 
-    // if input is equal to a name already in the search history, do not push that names apiCall onto the JSON localStorage object thing
-
-    // console.log(apiResponse.account.name);
-    // firstTwo = apiResponse.slice(0,2);
-    // if (apiResponse.data.account.name == )
-    history.push(apiResponse);
-
-
-    // history.push(apiResponse.data.account.name);
-    // history.push(apiResponse.data.stats.all);
-
-    // history.push(apiResponse.account.name);
-    // history.push(apiResponse.stats.all);
     if (history.length > 10) {
-
+        history.pop();
     }
     
     window.localStorage.setItem("history", JSON.stringify(history));
-
-    // historyParsed stores the array of JSON objects Pog
-    
-
-    // console.log(historyParsed[0].data.account.name);
   }
 }
+
+var names;
+var kills;
+var kdRatio;
+var winPercentage;
+
 
 function barGraph () {
   var barGraph = JSON.parse(window.localStorage.getItem("history"));
-  var temp0 = [joey, cam, will, darion];
-  var kills = [11, 12, 13, 14]
-  for (var i = 0; i < barGraph.length; i++) {
-    temp0.push(barGraph[0].data.account.name);
-    temp0.push(barGraph[0].data.stats.kills);
+  names = [];
+  kills = [];
+  kdRatio = [];
+  winPercentage = [];
 
-    // temp[i] = barGraph[i].data
+  console.log("is it working?")
+
+  for (var i = 0; i < barGraph.length; i++) {
+    names.push(barGraph[i].data.account.name);
+    kills.push(barGraph[i].data.stats.all.overall.kills);
+    kdRatio.push(barGraph[i].data.stats.all.overall.kd);
+    winPercentage.push(barGraph[i].data.stats.all.overall.winRate);
   }
 }
 
-
-// getHistory();
-
-//   name: "skxawng6",
-
-
+$(window).load(barGraph());
 
 
 
