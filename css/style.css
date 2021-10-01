@@ -47,11 +47,18 @@ header {
 }
 
 .nav-item a{
-   color: var(--darkblue);
    font-weight: bold; 
    border-bottom: solid 1px var(--lighterDark);
    padding-bottom: 0px;
    margin: 3px;
+   color: var(--brightPurple);
+    background-color: var(--brightPink);
+    background-image: linear-gradient(45deg,  var(--red), var(--brightPink));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
 }
 
 .darkTheme {

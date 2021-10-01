@@ -50,15 +50,15 @@
                     <button class="btn btn-primary my-2 my-sm-0 " id="submit" type="submit"> Compare </button> 
                 </div>  
                 <!-- Top player cards -->
-                <div>
-                    <section class="row">
+                <div style="display: block;" id="topPlayers">
+                    <section class="row d-flex justify-content-center">
                         <div class="col-md-4">
                             <div class="card">
                                 <grammarly class="cGcvT">
                                 </grammarly>
                                 <grammarly class="cGcvT">
                                 </grammarly>
-                                <h5 class="card-header">
+                                <h5 class="card-header" id="tp1">
                                     Top Player Name
                                 </h5>
                                 <div class="card-body">
@@ -84,7 +84,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="card">
-                                <h5 class="card-header">
+                                <h5 class="card-header" id="tp2">
                                     Top Player Name
                                 </h5>
                                 <div class="card-body d-flex justify-content-between">
@@ -107,33 +107,6 @@
                                         <p>Wins: <span id="tp2sqw"></span></p>
                                         <p>K/D: <span id="tp2sqkd"></span></p>
                                     </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <h5 class="card-header">
-                                    Top Player Name
-                                </h5>
-                                <div class="card-body">
-                                    <h5 class="playerOverall">Overall</h5>
-                                    <p> Wins: <span id="tp3w"></span></p>
-                                    <p>Win %: <span id="tp3win"></span></p>
-                                    <p>K/D: <span id="tp3kd"></span></p>
-                                    <p>Total Kills: <span id="tp3tk"></span></p>
-                                    <br>
-                                    <h5 class="solo">Solo</h5>
-                                    <p>Wins: <span id="tp3sw"></span></p>
-                                    <p>K/D: <span id="tp3skd"></span></p>
-                                    <br>
-                                    <h5 class="duo">Duo</h5>
-                                    <p>Wins: <span id="tp3dw"></span></p>
-                                    <p>K/D: <span id="tp3dkd"></span></p>
-                                    <br>
-                                    <h5 class="squads">Squads</h5>
-                                    <p>Wins: <span id="tp3sqw"></span></p>
-                                    <p>K/D: <span id="tp3sqkd"></span></p>
                                 </div>
                             </div>
                         </div>
@@ -144,12 +117,12 @@
     </div>
 
     <!-- Stat Comparison Container -->
-    <div class="container-fluid" >
+    <div class="container-fluid" style="display: none;" id="searchedPlayers">
         <!-- Container For Comparison Cards -->
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4">
                 <div class="card">
-                    <h4 class="card-header">
+                    <h4 class="card-header" id="p1">
                         Player 1 Name
                     </h4>
                     <div class="card-body d-flex justify-content-between">
@@ -178,9 +151,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card">
-                    <h4 class="card-header">
+                    <h4 class="card-header" id="p2">
                         Player 2 Name
                     </h4>
                     <div class="card-body d-flex justify-content-between">
