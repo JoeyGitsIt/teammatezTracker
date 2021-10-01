@@ -106,7 +106,7 @@ $(function () {
 // arguements that the api can take: name, accountType(epic/psn/xbl), timeWindow(season/lifetime), image (displays type of controller being used)
 
 // var apiLink = "https://fortnite-api.com/v2/stats/br/v2/?name=ninja";
-var historyParsed = "";
+// var historyParsed = "";
 
 
 // function getHistory() {
@@ -134,17 +134,36 @@ function setHistory(apiResponse) {
     // console.log(apiResponse.account.name);
     // firstTwo = apiResponse.slice(0,2);
     // if (apiResponse.data.account.name == )
-    // history.push(apiResponse);
-    history.push(apiResponse.data.account.name);
-    history.push(apiResponse.data.stats.all);
+    history.push(apiResponse);
+
+
+    // history.push(apiResponse.data.account.name);
+    // history.push(apiResponse.data.stats.all);
 
     // history.push(apiResponse.account.name);
     // history.push(apiResponse.stats.all);
+    if (history.length > 10) {
+
+    }
+    
     window.localStorage.setItem("history", JSON.stringify(history));
 
     // historyParsed stores the array of JSON objects Pog
-    // historyParsed = JSON.parse(localStorage.getItem("history"));
+    
+
     // console.log(historyParsed[0].data.account.name);
+  }
+}
+
+function barGraph () {
+  var barGraph = JSON.parse(window.localStorage.getItem("history"));
+  var temp0 = [joey, cam, will, darion];
+  var kills = [11, 12, 13, 14]
+  for (var i = 0; i < barGraph.length; i++) {
+    temp0.push(barGraph[0].data.account.name);
+    temp0.push(barGraph[0].data.stats.kills);
+
+    // temp[i] = barGraph[i].data
   }
 }
 
