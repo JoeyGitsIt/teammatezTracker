@@ -45,6 +45,8 @@ $('#submit').on('click', function () {
     console.log(tempP1);
     console.log(tempP2);
     getPlayers(tempP1, tempP2);
+    document.querySelector('#topPlayers').style.display = "none";
+    document.querySelector('#searchedPlayers').style.display = "block";
 })
 
 function getPlayers(player1, player2) {
@@ -55,6 +57,8 @@ function getPlayers(player1, player2) {
         method: 'GET',
     }).then(function (response) {
         console.log(response);
+        // $('#p1').innerHTML = response.data.account.name;
+        $('#p1').text(response.data.account.name);
         $('#p1w').text(response.data.stats.all.overall.wins);
         $('#p1win').text(response.data.stats.all.overall.winRate);
         $('#p1kd').text(response.data.stats.all.overall.kd);
@@ -75,6 +79,8 @@ function getPlayers(player1, player2) {
         method: 'GET',
     }).then(function (response2) {
         console.log(response2);
+        // $('#p2').innerHTML = response2.data.account.name;
+        $('#p2').text(response2.data.account.name);
         $('#p2w').text(response2.data.stats.all.overall.wins);
         $('#p2win').text(response2.data.stats.all.overall.winRate);
         $('#p2kd').text(response2.data.stats.all.overall.kd);
@@ -88,6 +94,55 @@ function getPlayers(player1, player2) {
         setHistory(response2);
     });
 }
+
+function getTopPlayers() {
+    var requestUrl = 'https://fortnite-api.com/v2/stats/br/v2?name=ship';
+
+    $.ajax({
+        url: requestUrl,
+        method: 'GET',
+    }).then(function (response) {
+        console.log(response);
+        // $('#p1').innerHTML = response.data.account.name;
+        $('#tp1').text(response.data.account.name);
+        $('#tp1w').text(response.data.stats.all.overall.wins);
+        $('#tp1win').text(response.data.stats.all.overall.winRate);
+        $('#tp1kd').text(response.data.stats.all.overall.kd);
+        $('#tp1tk').text(response.data.stats.all.overall.kills);
+        $('#tp1sw').text(response.data.stats.all.solo.wins);
+        $('#tp1skd').text(response.data.stats.all.solo.kd);
+        $('#tp1dw').text(response.data.stats.all.duo.wins);
+        $('#tp1dkd').text(response.data.stats.all.duo.kd);
+        $('#tp1sqw').text(response.data.stats.all.squad.wins);
+        $('#tp1sqkd').text(response.data.stats.all.squad.kd);
+    });
+    getSecondTop();
+}
+
+function getSecondTop() {
+    var requestUrl2 = 'https://fortnite-api.com/v2/stats/br/v2?name=king jterra';
+
+    $.ajax({
+        url: requestUrl2,
+        method: 'GET',
+    }).then(function (response2) {
+        console.log(response2);
+        // $('#p2').innerHTML = response2.data.account.name;
+        $('#tp2').text(response2.data.account.name);
+        $('#tp2w').text(response2.data.stats.all.overall.wins);
+        $('#tp2win').text(response2.data.stats.all.overall.winRate);
+        $('#tp2kd').text(response2.data.stats.all.overall.kd);
+        $('#tp2tk').text(response2.data.stats.all.overall.kills);
+        $('#tp2sw').text(response2.data.stats.all.solo.wins);
+        $('#tp2skd').text(response2.data.stats.all.solo.kd);
+        $('#tp2dw').text(response2.data.stats.all.duo.wins);
+        $('#tp2dkd').text(response2.data.stats.all.duo.kd);
+        $('#tp2sqw').text(response2.data.stats.all.squad.wins);
+        $('#tp2sqkd').text(response2.data.stats.all.squad.kd);
+    });
+}
+
+$(window).load(getTopPlayers());
 
 $(function () {
     var availableTags = JSON.parse(localStorage.getItem('autocomplete'));
@@ -138,10 +193,18 @@ function barGraph () {
     kdRatio.push(barGraph[i].data.stats.all.overall.kd);
     winPercentage.push(barGraph[i].data.stats.all.overall.winRate);
   }
+  var list = document.querySelector('#teammateList');
+  var tempHL = JSON.parse(localStorage.getItem('historyButtons'))
+  for (var i = 0; i < tempHL.length; i++) {
+      var temp = tempHL[i];
+      var tempLabel = document.createElement('li');
+      tempLabel.innerHTML = temp.toUpperCase();
+      list.appendChild(tempLabel);
+  }
+  
 }
 
 $(window).load(barGraph());
-
 
 // function to create chart after page loads
 
