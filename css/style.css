@@ -133,16 +133,21 @@ header {
     text-align: center; 
 }
 
-.recentTeammates button{
+.teammateList{
+
+}
+.teammateList li{
     color:white;
+    margin: 6px;
     font-weight: bold;
     text-align: center;
     padding: 5px 15px;
-    margin: 5px 50px;
     font-size: 115%;
     background-color: var(--lighterDark);
     border-radius: 10px;
     width: fit-content;
+    list-style: none;
+    min-width: 100%;
 }
 
 
