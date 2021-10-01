@@ -65,6 +65,7 @@ function getPlayers(player1, player2) {
         $('#p1dkd').text(response.data.stats.all.duo.kd);
         $('#p1sqw').text(response.data.stats.all.squad.wins);
         $('#p1sqkd').text(response.data.stats.all.squad.kd);
+        setHistory(response);
     });
 
     var requestUrl2 = 'https://fortnite-api.com/v2/stats/br/v2?name=' + player2;
@@ -84,6 +85,7 @@ function getPlayers(player1, player2) {
         $('#p2dkd').text(response2.data.stats.all.duo.kd);
         $('#p2sqw').text(response2.data.stats.all.squad.wins);
         $('#p2sqkd').text(response2.data.stats.all.squad.kd);
+        setHistory(response2);
     });
 }
 
@@ -100,46 +102,45 @@ $(function () {
     });
 });
 
-// setting up localStorage
-// arguements that the api can take: name, accountType(epic/psn/xbl), timeWindow(season/lifetime), image (displays type of controller being used)
+function setHistory(apiResponse) {  
+  if (apiResponse.status == 200) {
+    var history = JSON.parse(window.localStorage.getItem("history")) || [];
+    console.log(history);
 
-var apiLink = "https://fortnite-api.com/v2/stats/br/v2/?name=ninja";
-var historyParsed = "";
+    history.unshift(apiResponse);
 
-
-function getHistory() {
-    // get value of input box
-    $.ajax({
-        url: apiLink,
-        method: 'GET',
-    }).then(function (response) {
-        console.log('Ajax Reponse \n-------------');
-        setHistory(response);
-        console.log(response);
-    })
-}
-
-
-function setHistory(apiResponse) {
-    if (apiResponse.status == 200) {
-        var history = JSON.parse(window.localStorage.getItem("history")) || [];
-        console.log(history);
-
-        // if input is equal to a name already in the search history, do not push that names apiCall onto the JSON localStorage object thing
-        history.push(apiResponse);
-        window.localStorage.setItem("history", JSON.stringify(history));
-        // historyParsed stores the array of JSON objects Pog
-        // historyParsed = JSON.parse(localStorage.getItem("history"));
-        // console.log(historyParsed);
+    if (history.length > 10) {
+        history.pop();
     }
+    
+    window.localStorage.setItem("history", JSON.stringify(history));
+  }
 }
 
+var names;
+var kills;
+var kdRatio;
+var winPercentage;
 
-getHistory();
 
-//   name: "skxawng6",
+function barGraph () {
+  var barGraph = JSON.parse(window.localStorage.getItem("history"));
+  names = [];
+  kills = [];
+  kdRatio = [];
+  winPercentage = [];
 
+  console.log("is it working?")
 
+  for (var i = 0; i < barGraph.length; i++) {
+    names.push(barGraph[i].data.account.name);
+    kills.push(barGraph[i].data.stats.all.overall.kills);
+    kdRatio.push(barGraph[i].data.stats.all.overall.kd);
+    winPercentage.push(barGraph[i].data.stats.all.overall.winRate);
+  }
+}
+
+$(window).load(barGraph());
 
 
 
