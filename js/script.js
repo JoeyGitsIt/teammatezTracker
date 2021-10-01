@@ -21,7 +21,6 @@ $('#submit').on('click', function () {
         tempLS.unshift(tempP1);
         tempLS.unshift(tempP2);
     }
-    debugger
     if (tempP1 != "" && tempP2 != "") {
         if (tempHB.includes(tempP1) 
         && !tempHB.includes(tempP2)) {
