@@ -8,15 +8,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <link rel="stylesheet" href="./css/style.css">
     <title>Teammatez History</title>
-
-<!-- chart.js install -->
-<script 
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js">
-</script>
-<!-- link charts -->
-<script src="charts.js"></script>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -50,7 +42,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js">
                         <section class="d-flex flex-direction-column justify-content-center">
                             <div style="display:none"> Player Stats</div>
                             <div> 
-                                <!-- <img src="./images/barchart-placeholder.svg" alt="Bar chart of player Stats"> -->
                                 <canvas id="kdChart" width="350" height="350"></canvas>
                             </div>
                         </section>
@@ -64,8 +55,22 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js">
                         <section class="d-flex flex-direction-column justify-content-center">
                             <div style="display:none"> Player Stats</div>
                             <div> 
-                                <!-- <img src="./images/barchart-placeholder.svg" alt="Bar chart of player Stats"> -->
-                                <canvas id="winpChart" width="400" height="450"> </canvas>
+                                <canvas id="winpChart" width="350" height="350"> </canvas>
+                             </div>
+
+                        </section>
+
+                    </div>
+                </div>
+                <div class="card"">
+                    <h5 class="card-header">
+                        Time Played
+                    </h5>
+                    <div class="card-body">
+                        <section class="d-flex flex-direction-column justify-content-center">
+                            <div style="display:none"> Player Stats</div>
+                            <div> 
+                                <canvas id="timePlayed" width="350" height="350"> </canvas>
                              </div>
 
                         </section>
