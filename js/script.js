@@ -39,6 +39,7 @@ function getPlayers(player1, player2) {
         $('#p1dkd').text(response.data.stats.all.duo.kd);
         $('#p1sqw').text(response.data.stats.all.squad.wins);
         $('#p1sqkd').text(response.data.stats.all.squad.kd);
+        setHistory(response);
     });
 
     var requestUrl2 = 'https://fortnite-api.com/v2/stats/br/v2?name=' + player2;
@@ -58,6 +59,7 @@ function getPlayers(player1, player2) {
         $('#p2dkd').text(response2.data.stats.all.duo.kd);
         $('#p2sqw').text(response2.data.stats.all.squad.wins);
         $('#p2sqkd').text(response2.data.stats.all.squad.kd);
+        setHistory(response2);
     });
 }
 
@@ -75,39 +77,50 @@ $( function() {
 // setting up localStorage
 // arguements that the api can take: name, accountType(epic/psn/xbl), timeWindow(season/lifetime), image (displays type of controller being used)
 
-var apiLink = "https://fortnite-api.com/v2/stats/br/v2/?name=ninja";
+// var apiLink = "https://fortnite-api.com/v2/stats/br/v2/?name=ninja";
 var historyParsed = "";
 
 
-function getHistory() {
-  // get value of input box
-  $.ajax({
-    url: apiLink,
-    method: 'GET',
-  }).then(function (response) {
-    console.log('Ajax Reponse \n-------------');
-    setHistory(response);
-    console.log(response);
-  })
-}
+// function getHistory() {
+//   get value of input box
+//   $.ajax({
+//     url: apiLink,
+//     method: 'GET',
+//   }).then(function (response) {
+//     console.log('Ajax Reponse \n-------------');
+//     setHistory(response);
+//     console.log(response);
+//   })
+// }
 
 
 function setHistory(apiResponse) {  
   if (apiResponse.status == 200) {
+
     var history = JSON.parse(window.localStorage.getItem("history")) || [];
     console.log(history);
 
+
     // if input is equal to a name already in the search history, do not push that names apiCall onto the JSON localStorage object thing
-    
-    history.push(apiResponse);
+
+    // console.log(apiResponse.account.name);
+    // firstTwo = apiResponse.slice(0,2);
+    // if (apiResponse.data.account.name == )
+    // history.push(apiResponse);
+    history.push(apiResponse.data.account.name);
+    history.push(apiResponse.data.stats.all);
+
+    // history.push(apiResponse.account.name);
+    // history.push(apiResponse.stats.all);
     window.localStorage.setItem("history", JSON.stringify(history));
+
     // historyParsed stores the array of JSON objects Pog
     // historyParsed = JSON.parse(localStorage.getItem("history"));
-    // console.log(historyParsed);
+    // console.log(historyParsed[0].data.account.name);
   }
 }
 
 
-getHistory();
+// getHistory();
 
 //   name: "skxawng6",
