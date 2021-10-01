@@ -10,7 +10,6 @@ $('#submit').on('click', function () {
     if (tempHB == null) {
         tempHB = [];
     }
-    debugger;
     if (tempLS.includes(tempP1) 
     && !tempLS.includes(tempP2)) {
         tempLS.unshift(tempP2);
@@ -33,11 +32,13 @@ $('#submit').on('click', function () {
         tempHB.unshift(tempP1);
         tempHB.unshift(tempP2);
     }
-    if (tempHB = 12) {
-        tempHB.pop();
-        tempHB.pop();
-    } else if (tempHB = 11) {
-        tempHB.pop();
+    if (tempHB) {
+        if (tempHB.length == 12) {
+            tempHB.pop();
+            tempHB.pop();
+        } else if (tempHB.length == 11) {
+            tempHB.pop();
+        }
     }
     localStorage.setItem('autocomplete', JSON.stringify(tempLS));
     localStorage.setItem('historyButtons', JSON.stringify(tempHB));
