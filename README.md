@@ -1,3 +1,4 @@
+
 # Teammatez is a Fortnite stat tracking comparison website.
 
 It utilizes the Fortnite Api and Chart.js api to allow players to compare themselves to others or two people pto eachother.
