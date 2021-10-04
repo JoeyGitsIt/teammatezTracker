@@ -1,7 +1,18 @@
-# teammatezTracker
 
-https://joeygitsit.github.io/teammatezTracker/index.html
+# Teammatez is a Fortnite stat tracking comparison website.
 
-teammatezTracker is a website that allows the user to obtain fortnite user data by inputting an Epic Games username. This data is then displayed on the page. 
+It utilizes the Fortnite Api and Chart.js api to allow players to compare themselves to others or two people pto eachother.
 
-Every search, up to 10 searches, is saved. After clicking on the "Recent Stats" button it will take you to a new page where the information from the previous searches is displayed allowing the user to analyze their teammates stats.
+It stores the last 10 searched players in local storage and allows you to see them on the Recent Stats page.
+
+The recent stats page also shows a graph comparing certain stats of the last 10 people searhced.
+
+Active Link: https://joeygitsit.github.io/teammatezTracker/
+
+
+![teammatez home](https://user-images.githubusercontent.com/85651248/135788427-76b6558b-71ae-42ea-9d17-2ec8f11b7378.png)
+
+
+![image](https://user-images.githubusercontent.com/85651248/135788454-a47b52f5-daf2-4b56-b08d-74558ea1d2da.png)
+
+![image](https://user-images.githubusercontent.com/85651248/135788731-3f8cc2a8-ba35-4c29-ae54-3eef5edbb8d4.png)
